@@ -209,18 +209,98 @@ select * from books where booK_title = 'To Kill a Mockingbird';
 Update an Existing Member's Address
 */
 
+Update Members 
+set member_name='Dev Charaya'
+where member_id='C101';
+
+
+/*Task 3: Delete a Record from the Issued Status Table -- 
+Objective: Delete the record with issued_id = 'IS121' from the 
+issued_status table.*/
+select * from issued_status;
+
+delete from issued_status
+where issued_id ='IS121';
+
+/*Task 4: Retrieve All Books Issued by a Specific Employee -- 
+Objective: Select all books issued by the employee with emp_id = 'E101'.*/
+select * from issued_status where issued_emp_id = 'E101';
 
 
 
+/*Task 5: List Members Who Have Issued More Than One Book -- 
+Objective: Use GROUP BY to find members who have issued more than one book.*/
+select Issued_emp_id, count(issued_id) from issued_status 
+group by Issued_emp_id
+order by  2 desc;
+
+
+/*Task 6: Create Summary Tables: Used CTAS to 
+generate new tables based on query results - each book and total book_issued_cnt** */
+select * from books;
+select * from issued_status;
+
+with book_issued_count as(
+select b.isbn, b.book_title, count(i.issued_id)
+from books as b
+join  issued_status as i
+on b.isbn = i.issued_book_isbn
+group by b.isbn
+order by 3 desc
+)
+select * from book_issued_count;
+
+
+/*Task 7. Retrieve All Books in a Specific Category:*/
+select * from books where category='Classic';
+
+/*Task 8: Find Total Rental Income by Category:*/
+select b.category, sum(b.rental_price), count(*)
+from books as b
+join issued_status as i 
+on b.isbn=  i.issued_book_isbn
+group by category
+order by 3 desc;
 
 
 
+/*Task 9: List Members Who Registered in the Last 180 Days:*/
+select * from members where reg_date>= current_date - interval '180 days';
 
 
+/* Task 10: List Employees with Their Branch Manager's Name and their branch details
+*/
 
 
+select * from  employees;
+
+select * from branch;
+-- join 1 because of the branch details and again for the manager name
+
+select e.emp_name, e.branch_id, b.*,e2.emp_name as manager_name
+from employees as e
+join branch as b
+on b.branch_id = e.branch_id
+join employees e2
+on b.manager_id = e2.emp_id;
 
 
+/*Task 11. Create a Table of Books with 
+Rental Price Above a Certain Threshold:
+*/
+ select * from books where rental_price > (select avg(rental_price) from books);
+
+/*
+Task 12: Retrieve the List of Books Not Yet Returned
+*/
+
+ select * from issued_status
+ select * from return_status
 
 
-
+ select * from
+ issued_status as i 
+ left join 
+ return_status as r
+ on i.issued_id = r.issued_id 
+ where r.return_id is NULL;
