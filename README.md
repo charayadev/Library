@@ -307,25 +307,6 @@ WHERE r.return_id IS NULL;
 4. Ensured data integrity
 
 ---
-
-## Project Structure
-
-```
-Library_Management_SQL/
-│
-├── library_management.sql       # Complete project SQL script
-│   ├── Table Creation
-│   ├── Foreign Key Constraints
-│   ├── Data Insertion
-│   └── Query Tasks (1-12)
-│
-├── README.md                    # Project documentation
-│
-└── data/
-    ├── sample_data.sql          # Sample data inserts
-    └── schema_diagram.png       # ER diagram (optional)
-```
-
 ---
 
 ## How to Run This Project
