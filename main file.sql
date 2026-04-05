@@ -304,3 +304,7 @@ Task 12: Retrieve the List of Books Not Yet Returned
  return_status as r
  on i.issued_id = r.issued_id 
  where r.return_id is NULL;
+
+
+
+ -- project done.
