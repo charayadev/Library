@@ -482,7 +482,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 MCA Student | Data Analytics Enthusiast
 
 **Connect with me:**
-* GitHub: [@devcharaya](https://github.com/devcharaya)
+* GitHub: [@devcharaya](https://github.com/charayadev)
 * LinkedIn: [https://www.linkedin.com/in/dev-charaya-186b40314/]
 * Email: [charayadev11@gmail.com]
 
